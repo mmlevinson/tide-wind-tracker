@@ -1,0 +1,23 @@
+---
+const { pageTitle = "BIYcoder" } = Astro.props;
+import '../styles/global.css';
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <header class="biycoder-site-menubar">
+      <nav aria-label="Primary">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/settings">Settings</a>
+        <a href="/help">Help</a>
+        <a href="/faq">FAQ</a>
+        <a href="/tides-display">Tides Display</a>
+      </nav>
+    </header>
+    <slot />
+  </body>
+</html>

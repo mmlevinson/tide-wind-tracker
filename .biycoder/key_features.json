@@ -1,0 +1,132 @@
+{
+  "features": [
+    {
+      "featureId": "feature-splash-screen",
+      "title": "Splash Screen",
+      "description": "Full-screen intro while the app or site loads.",
+      "selected": true,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-top-menu-bar",
+      "title": "Top Menu Bar",
+      "description": "Primary navigation links across the top of every page.",
+      "selected": true,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-mobile-menu-hamburger-menu",
+      "title": "Mobile Menu (Hamburger Menu)",
+      "description": "Collapsible navigation for small screens and touch devices.",
+      "selected": true,
+      "requiresPaidThirdParty": false
+    }
+  ],
+  "catalog": [
+    {
+      "featureId": "feature-splash-screen",
+      "title": "Splash Screen",
+      "description": "Full-screen intro while the app or site loads.",
+      "selected": true,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-hero-page",
+      "title": "Hero Page",
+      "description": "Large headline area above the fold on landing pages.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-top-menu-bar",
+      "title": "Top Menu Bar",
+      "description": "Primary navigation links across the top of every page.",
+      "selected": true,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-mobile-menu-hamburger-menu",
+      "title": "Mobile Menu (Hamburger Menu)",
+      "description": "Collapsible navigation for small screens and touch devices.",
+      "selected": true,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-left-side-bar",
+      "title": "Left Side Bar",
+      "description": "Vertical navigation or tools docked on the left.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-right-side-bar",
+      "title": "Right Side Bar",
+      "description": "Secondary panels or navigation on the right edge.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-lower-status-bar",
+      "title": "Lower Status Bar",
+      "description": "Footer strip for status, links, or copyright.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-photo-gallery",
+      "title": "Photo Gallery",
+      "description": "Grid or carousel for browsing image collections.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-breadcrumb-trail",
+      "title": "Breadcrumb Trail",
+      "description": "Shows where you are in the site hierarchy.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-site-administrator",
+      "title": "Site Administrator",
+      "description": "Role for managing site-wide settings and content.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-users-accounts",
+      "title": "Users Accounts",
+      "description": "Sign-up, login, and profile for end users.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-priveleging-tiers-for-users",
+      "title": "Priveleging Tiers for Users",
+      "description": "Different permission levels such as guest, member, or admin.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-admin-control-panel",
+      "title": "Admin Control Panel",
+      "description": "Dashboard for operators to configure the product.",
+      "selected": false,
+      "requiresPaidThirdParty": false
+    },
+    {
+      "featureId": "feature-text-chat",
+      "title": "Text Chat",
+      "description": "Real-time typed messaging between users or with support.",
+      "selected": false,
+      "requiresPaidThirdParty": true
+    },
+    {
+      "featureId": "feature-video-chat",
+      "title": "Video Chat",
+      "description": "Live video sessions for meetings or customer support.",
+      "selected": false,
+      "requiresPaidThirdParty": true
+    }
+  ]
+}

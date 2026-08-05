@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "titleHints": {
+    "/": "Home",
+    "/hero": "Hero",
+    "/about": "About",
+    "/settings": "Settings",
+    "/contact-us": "Contact Us",
+    "/products": "Products",
+    "/services": "Services",
+    "/login": "Login",
+    "/account": "Account",
+    "/blog": "Blog",
+    "/forum": "Forum",
+    "/help": "Help",
+    "/faq": "FAQ",
+    "/support": "Support",
+    "/tides-display": "Tides Display"
+  },
+  "views": [
+    {
+      "label": "Home",
+      "route": "/",
+      "filePath": "src/pages/index.astro",
+      "depth": 0,
+      "title": "Home"
+    },
+    {
+      "label": "About",
+      "route": "/about",
+      "filePath": "src/pages/about.astro",
+      "depth": 0,
+      "title": "About"
+    },
+    {
+      "label": "FAQ",
+      "route": "/faq",
+      "filePath": "src/pages/faq.astro",
+      "depth": 0,
+      "title": "FAQ"
+    },
+    {
+      "label": "Help",
+      "route": "/help",
+      "filePath": "src/pages/help.astro",
+      "depth": 0,
+      "title": "Help"
+    },
+    {
+      "label": "Settings",
+      "route": "/settings",
+      "filePath": "src/pages/settings.astro",
+      "depth": 0,
+      "title": "Settings"
+    },
+    {
+      "label": "Tides Display",
+      "route": "/tides-display",
+      "filePath": "src/pages/tides-display.astro",
+      "depth": 0,
+      "title": "Tides Display"
+    }
+  ]
+}

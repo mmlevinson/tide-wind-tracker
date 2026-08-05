@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "stylingTemplateId": "pure_css",
+  "displayName": "Pure.css",
+  "npmPackage": "purecss",
+  "npmVersion": "3.0.0",
+  "globalCssFile": "src/styles/global.css",
+  "overrideFile": "src/styles/biycoder-theme-overrides.css",
+  "docsUrl": "https://purecss.io/",
+  "agentInstructions": "Site styling uses Pure.css (pure_css). Change appearance only in src/styles/biycoder-theme-overrides.css. Never edit node_modules. Pure has minimal theming; set base colors on body, a, and .pure-button-primary in overrides."
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "selectedIconLibraryIds": [
+    "google_material_symbols"
+  ],
+  "libraries": [
+    {
+      "id": "google_material_symbols",
+      "displayName": "Google Material Symbols",
+      "category": "Font",
+      "docsUrl": "https://fonts.google.com/icons",
+      "npmPackage": "",
+      "npmVersion": "",
+      "previewKind": "material"
+    }
+  ],
+  "agentNote": "Use the selected icon libraries consistently across the Astro project. See docsUrl on each library entry for usage."
+}
