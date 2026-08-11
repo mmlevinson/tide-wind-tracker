@@ -24,7 +24,6 @@ export class ThemedSettingsFormController {
     const timeFormatField = this.formEl.querySelector('[name="timeFormat"]')
     const windUnitField = this.formEl.querySelector('[name="windSpeedUnit"]')
     const thresholdField = this.formEl.querySelector('[name="windSpeedThreshold"]')
-    const splashField = this.formEl.querySelector('[name="splashEnabled"]')
 
     if (unitsField) {
       unitsField.value = settings.units
@@ -37,9 +36,6 @@ export class ThemedSettingsFormController {
     }
     if (thresholdField) {
       thresholdField.value = String(settings.windSpeedThreshold)
-    }
-    if (splashField) {
-      splashField.checked = settings.splashEnabled !== false
     }
 
     return settings
@@ -54,8 +50,7 @@ export class ThemedSettingsFormController {
       units: formData.get('units'),
       timeFormat: formData.get('timeFormat'),
       windSpeedUnit: formData.get('windSpeedUnit'),
-      windSpeedThreshold: Number(formData.get('windSpeedThreshold')),
-      splashEnabled: formData.get('splashEnabled') === 'on'
+      windSpeedThreshold: Number(formData.get('windSpeedThreshold'))
     }
   }
 

@@ -7,7 +7,6 @@ const DefaultSettings = {
   timeFormat: '12h',
   windSpeedUnit: 'knots',
   windSpeedThreshold: 20,
-  splashEnabled: true,
   updatedAt: new Date().toISOString()
 }
 

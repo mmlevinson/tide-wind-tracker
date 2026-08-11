@@ -1,44 +1,112 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
 import ThemedPageHeader from '../components/ThemedPageHeader.astro'
+import MaterialIcon from '../components/MaterialIcon.astro'
 ---
 
-<SiteLayout pageTitle="About" showSplash={false}>
+<SiteLayout pageTitle="About">
   <main>
     <ThemedPageHeader
-      title="About Wind Tide Tracker"
-      subtitle="Built for people who read the water before they launch."
-      icon="info"
+      title="Wind Tide Tracker"
+      subtitle="Tides and wind at your location — plan your day on the water with confidence."
+      icon="sailing"
     />
 
-    <section class="themed-panel" aria-labelledby="about-mission-heading">
-      <h2 id="about-mission-heading" class="themed-panel__title">Our mission</h2>
+    <section class="themed-panel" aria-labelledby="about-intro-heading">
+      <h2 id="about-intro-heading" class="themed-panel__title">Your companion on the water</h2>
       <p>
-        Wind Tide Tracker helps recreational boaters, kayakers, paddle boarders, and beachcombers
-        understand tide and wind conditions at their exact location. Whether you are planning a
-        morning paddle or checking if the afternoon breeze will pick up, the app puts the essentials
-        in one calm, readable view.
+        Wind Tide Tracker uses your GPS location to find nearby tide heights, wind speed,
+        and wind direction. Move through the day with an interactive time slider and see
+        how conditions change before you launch your kayak, board the boat, or head to the beach.
       </p>
+      <div class="themed-cta-row">
+        <a href="/tides-display" class="pure-button pure-button-primary" aria-label="Open tides and wind display">
+          <MaterialIcon name="waves" size="1.1rem" />
+          View Tides &amp; Wind
+        </a>
+        <a href="/settings" class="pure-button" aria-label="Open application settings">
+          <MaterialIcon name="settings" size="1.1rem" />
+          Settings
+        </a>
+      </div>
     </section>
 
-    <section class="themed-panel" aria-labelledby="about-features-heading">
-      <h2 id="about-features-heading" class="themed-panel__title">What makes it different</h2>
-      <ul>
-        <li>GPS-aware — conditions for where you actually are, not a generic harbor listing</li>
-        <li>Time slider — see how tides and wind evolve through your day</li>
-        <li>Visual tide chart — positive tides in black, negative tides in red, with live value readout</li>
-        <li>Wind alerts — speeds above your threshold stand out so you notice changing conditions</li>
-        <li>Offline-ready PWA — install on phone or tablet and open it like a native app</li>
-      </ul>
-    </section>
+    <section aria-labelledby="about-features-heading">
+      <h2 id="about-features-heading" class="visually-hidden">Key features</h2>
+      <div class="themed-feature-grid">
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="my_location" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">GPS Location</h3>
+          <p class="themed-feature-card__text">
+            Automatically detects where you are and finds the nearest tide and wind data for your spot.
+          </p>
+        </article>
 
-    <section class="themed-panel" aria-labelledby="about-audience-heading">
-      <h2 id="about-audience-heading" class="themed-panel__title">Who it is for</h2>
-      <p>
-        Anyone who plans to be on or near the water and needs to know when the tide or wind will
-        shift — from casual beach walks to serious paddling trips. Settings let you choose the
-        units and formats that match how you think about the day.
-      </p>
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="schedule" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Time Slider</h3>
+          <p class="themed-feature-card__text">
+            Scrub through the day to preview tide levels and wind conditions at any hour.
+          </p>
+        </article>
+
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="show_chart" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Tide Chart</h3>
+          <p class="themed-feature-card__text">
+            A gentle, Apple Weather–inspired chart with positive tides in black and negative tides in red.
+          </p>
+        </article>
+
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="air" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Wind Report</h3>
+          <p class="themed-feature-card__text">
+            Average wind speed and direction update as you move the time slider. High winds highlight in a contrasting color.
+          </p>
+        </article>
+
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="tune" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Customizable</h3>
+          <p class="themed-feature-card__text">
+            Choose feet or meters, 12- or 24-hour time, and set your own high-wind alert threshold.
+          </p>
+        </article>
+
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="download" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Install as App</h3>
+          <p class="themed-feature-card__text">
+            Add Wind Tide Tracker to your home screen for quick access on phone or tablet — works offline after first load.
+          </p>
+        </article>
+      </div>
     </section>
   </main>
 </SiteLayout>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>

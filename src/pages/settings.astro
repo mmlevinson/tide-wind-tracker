@@ -3,7 +3,7 @@ import SiteLayout from '../layouts/SiteLayout.astro'
 import ThemedPageHeader from '../components/ThemedPageHeader.astro'
 ---
 
-<SiteLayout pageTitle="Settings" showSplash={false}>
+<SiteLayout pageTitle="Settings">
   <main>
     <ThemedPageHeader
       title="Settings"
@@ -58,13 +58,6 @@ import ThemedPageHeader from '../components/ThemedPageHeader.astro'
             <span id="settings-wind-threshold-help" class="help-text">
               Wind speeds at or above this value are highlighted in a contrasting color.
             </span>
-          </div>
-
-          <div class="pure-control-group">
-            <label for="settings-splash">
-              <input type="checkbox" id="settings-splash" name="splashEnabled" />
-              Show splash screen on launch
-            </label>
           </div>
         </fieldset>
 

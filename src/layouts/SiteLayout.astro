@@ -1,19 +1,14 @@
 ---
 /**
- * Shared site layout: splash screen, top menu bar, mobile hamburger menu, PWA meta.
+ * Shared site layout: top menu bar, mobile hamburger menu, PWA meta.
  * @prop {string} pageTitle - Document title for the current page.
- * @prop {boolean} showSplash - Whether to render the splash screen overlay.
- * @prop {string} splashNextRoute - Optional route to open after the splash dismisses.
  */
 import '../styles/global.css'
-import ThemedSplashScreen from '../components/ThemedSplashScreen.astro'
 import ThemedSiteMenubar from '../components/ThemedSiteMenubar.astro'
 import ThemedMobileMenu from '../components/ThemedMobileMenu.astro'
 
 const {
-  pageTitle = 'Wind Tide Tracker',
-  showSplash = false,
-  splashNextRoute = ''
+  pageTitle = 'Wind Tide Tracker'
 } = Astro.props
 
 const currentPath = Astro.url.pathname
@@ -55,8 +50,6 @@ const FullTitle = pageTitle === AppName ? AppName : `${pageTitle} · ${AppName}`
         <ThemedMobileMenu currentPath={currentPath} />
         <ThemedSiteMenubar currentPath={currentPath} />
       </div>
-
-      {showSplash && <ThemedSplashScreen nextRoute={splashNextRoute} />}
 
       <div class="themed-app-shell__content">
         <slot />
