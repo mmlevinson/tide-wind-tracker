@@ -1,9 +1,116 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro'
+import ThemedPageHeader from '../components/ThemedPageHeader.astro'
+import MaterialIcon from '../components/MaterialIcon.astro'
 ---
-<SiteLayout pageTitle="Welcome to Your Application">
-    <main>
-      <h1>Welcome to Your Application</h1>
-      <p>Your BIYcoder application home page.</p>
-    </main>
+
+<SiteLayout
+  pageTitle="Wind Tide Tracker"
+  showSplash={true}
+  splashNextRoute="/tides-display"
+>
+  <main>
+    <ThemedPageHeader
+      title="Wind Tide Tracker"
+      subtitle="Tides and wind at your location — plan your day on the water with confidence."
+      icon="sailing"
+    />
+
+    <section class="themed-panel" aria-labelledby="home-intro-heading">
+      <h2 id="home-intro-heading" class="themed-panel__title">Your companion on the water</h2>
+      <p>
+        Wind Tide Tracker uses your GPS location to find nearby tide heights, wind speed,
+        and wind direction. Move through the day with an interactive time slider and see
+        how conditions change before you launch your kayak, board the boat, or head to the beach.
+      </p>
+      <div class="themed-cta-row">
+        <a href="/tides-display" class="pure-button pure-button-primary" aria-label="Open tides and wind display">
+          <MaterialIcon name="waves" size="1.1rem" />
+          View Tides &amp; Wind
+        </a>
+        <a href="/settings" class="pure-button" aria-label="Open application settings">
+          <MaterialIcon name="settings" size="1.1rem" />
+          Settings
+        </a>
+      </div>
+    </section>
+
+    <section aria-labelledby="home-features-heading">
+      <h2 id="home-features-heading" class="visually-hidden">Key features</h2>
+      <div class="themed-feature-grid">
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="my_location" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">GPS Location</h3>
+          <p class="themed-feature-card__text">
+            Automatically detects where you are and finds the nearest tide and wind data for your spot.
+          </p>
+        </article>
+
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="schedule" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Time Slider</h3>
+          <p class="themed-feature-card__text">
+            Scrub through the day to preview tide levels and wind conditions at any hour.
+          </p>
+        </article>
+
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="show_chart" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Tide Chart</h3>
+          <p class="themed-feature-card__text">
+            A gentle, Apple Weather–inspired chart with positive tides in black and negative tides in red.
+          </p>
+        </article>
+
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="air" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Wind Report</h3>
+          <p class="themed-feature-card__text">
+            Average wind speed and direction update as you move the time slider. High winds highlight in a contrasting color.
+          </p>
+        </article>
+
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="tune" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Customizable</h3>
+          <p class="themed-feature-card__text">
+            Choose feet or meters, 12- or 24-hour time, and set your own high-wind alert threshold.
+          </p>
+        </article>
+
+        <article class="themed-feature-card">
+          <div class="themed-feature-card__icon" aria-hidden="true">
+            <MaterialIcon name="download" size="2rem" />
+          </div>
+          <h3 class="themed-feature-card__title">Install as App</h3>
+          <p class="themed-feature-card__text">
+            Add Wind Tide Tracker to your home screen for quick access on phone or tablet — works offline after first load.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
 </SiteLayout>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>

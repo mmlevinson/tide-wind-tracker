@@ -1,0 +1,15 @@
+Symbols:
+  √ = working as intended
+  F = fixed...now same as √ after an applied correction
+  ! = crashed app, requiring Force Quit
+  X = broken (i.e. not working or not working as intended)
+  B = Bug (operates, but the incorrect result)
+  U = Unacceptable, working but not ideal, tolerate for now but needs improvement
+  N = New problem, just found or not seen prior to this present code base
+  ∞ | opt-5 = working but unusually prolonged, slow, or hung up
+  @ = present but not tested yet
+  * = wish list item (wanted but not attempted yet)
+  + = Added ... new to this commit
+  - = Removed during this commit
+  ∆ | opt-j = Changed how something works on this commit
+  ? = Maybe, maybe not

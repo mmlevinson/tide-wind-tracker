@@ -1,9 +1,110 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro'
+import ThemedPageHeader from '../components/ThemedPageHeader.astro'
+import MaterialIcon from '../components/MaterialIcon.astro'
 ---
-<SiteLayout pageTitle="Tides Display">
-  <main>
-    <h1>Tides Display</h1>
-    <p>Placeholder view scaffolded by BIYcoder.</p>
+
+<SiteLayout pageTitle="Tides Display" showSplash={false}>
+  <main class="themed-tides-display" id="themed-tides-display">
+    <ThemedPageHeader
+      title="Tides &amp; Wind"
+      subtitle="Live conditions for your location — scrub through the day to plan ahead."
+      icon="waves"
+    />
+
+    <div class="themed-location-bar" role="status" aria-live="polite">
+      <MaterialIcon name="my_location" size="1.25rem" label="Location" />
+      <span class="themed-location-bar__label">Location:</span>
+      <span id="themed-location-value">Waiting for GPS…</span>
+    </div>
+
+    <section class="themed-panel" aria-labelledby="wind-report-heading">
+      <h2 id="wind-report-heading" class="themed-panel__title">Wind Report</h2>
+      <div class="themed-wind-report">
+        <div class="themed-wind-stat">
+          <span class="themed-wind-stat__label">Avg Speed</span>
+          <span id="themed-wind-speed" class="themed-wind-stat__value" aria-live="polite">—</span>
+        </div>
+        <div class="themed-wind-stat">
+          <span class="themed-wind-stat__label">Direction</span>
+          <span id="themed-wind-direction" class="themed-wind-stat__value" aria-live="polite">—</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="themed-panel" aria-labelledby="time-control-heading">
+      <div class="themed-time-control">
+        <div class="themed-time-control__header">
+          <span id="time-control-heading" class="themed-time-control__label">Time of Day</span>
+          <span id="themed-time-label" class="themed-time-control__value" aria-live="polite">8:00 AM</span>
+        </div>
+        <input
+          type="range"
+          id="themed-time-slider"
+          class="themed-time-slider"
+          min="0"
+          max="23"
+          step="0.25"
+          value="8"
+          aria-label="Select time of day"
+          aria-valuemin="0"
+          aria-valuemax="23"
+          aria-valuenow="8"
+        />
+      </div>
+
+      <div class="themed-tide-readout">
+        <span class="themed-tide-readout__label">Tide Height</span>
+        <p id="themed-tide-value" class="themed-tide-readout__value themed-tide-value--positive" aria-live="polite">—</p>
+      </div>
+    </section>
+
+    <section class="themed-panel" aria-labelledby="tide-chart-heading">
+      <h2 id="tide-chart-heading" class="themed-panel__title">Tide Chart</h2>
+      <div class="themed-tide-chart-wrap">
+        <canvas
+          id="themed-tide-chart"
+          class="themed-tide-chart"
+          width="900"
+          height="320"
+          role="img"
+          aria-label="Tide height chart for the day. Positive tides shown in black, negative tides in red."
+        ></canvas>
+      </div>
+      <p style="margin-top: 0.75rem; font-size: 0.85rem; color: var(--wtt-color-text-muted);">
+        Sample data shown — live tide and wind API integration coming soon.
+      </p>
+    </section>
   </main>
 </SiteLayout>
+
+<script type="module">
+  import { ThemedTideDisplayController, createSampleTideData, createSampleWindData } from '../lib/ThemedTideDisplayController.js'
+  import { ThemedAppSettings } from '../lib/ThemedAppSettings.js'
+
+  const settingsStore = new ThemedAppSettings()
+  const settings = settingsStore.load()
+
+  const controller = new ThemedTideDisplayController({
+    rootEl: document.getElementById('themed-tides-display'),
+    timeSlider: document.getElementById('themed-time-slider'),
+    timeLabel: document.getElementById('themed-time-label'),
+    tideValueEl: document.getElementById('themed-tide-value'),
+    windSpeedEl: document.getElementById('themed-wind-speed'),
+    windDirectionEl: document.getElementById('themed-wind-direction'),
+    chartCanvas: document.getElementById('themed-tide-chart'),
+    locationEl: document.getElementById('themed-location-value'),
+    settings: settings,
+    tideData: createSampleTideData(),
+    windData: createSampleWindData()
+  })
+
+  controller.init()
+
+  const slider = document.getElementById('themed-time-slider')
+  if (slider) {
+    slider.addEventListener('input', () => {
+      slider.setAttribute('aria-valuenow', slider.value)
+    })
+  }
+</script>

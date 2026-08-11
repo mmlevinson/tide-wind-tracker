@@ -1,0 +1,10 @@
+{
+  "links": [
+    { "title": "Home", "href": "/", "icon": "home" },
+    { "title": "Tides Display", "href": "/tides-display", "icon": "waves" },
+    { "title": "Settings", "href": "/settings", "icon": "settings" },
+    { "title": "About", "href": "/about", "icon": "info" },
+    { "title": "Help", "href": "/help", "icon": "help" },
+    { "title": "FAQ", "href": "/faq", "icon": "quiz" }
+  ]
+}

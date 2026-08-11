@@ -1,9 +1,112 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro'
+import ThemedPageHeader from '../components/ThemedPageHeader.astro'
 ---
-<SiteLayout pageTitle="Settings">
+
+<SiteLayout pageTitle="Settings" showSplash={false}>
   <main>
-    <h1>Settings</h1>
-    <p>Placeholder view scaffolded by BIYcoder.</p>
+    <ThemedPageHeader
+      title="Settings"
+      subtitle="Customize units, time format, and wind alerts. Settings are saved locally and restored on next launch."
+      icon="settings"
+    />
+
+    <section class="themed-panel">
+      <form id="themed-settings-form" class="themed-settings-form pure-form" aria-label="Application settings">
+        <fieldset>
+          <legend class="visually-hidden">Display preferences</legend>
+
+          <div class="pure-control-group">
+            <label for="settings-units">Tide units</label>
+            <select id="settings-units" name="units" aria-describedby="settings-units-help">
+              <option value="feet">Feet (ft)</option>
+              <option value="meters">Meters (m)</option>
+            </select>
+            <span id="settings-units-help" class="help-text">How tide heights are displayed on the chart.</span>
+          </div>
+
+          <div class="pure-control-group">
+            <label for="settings-time-format">Time format</label>
+            <select id="settings-time-format" name="timeFormat" aria-describedby="settings-time-help">
+              <option value="12h">12-hour (AM/PM)</option>
+              <option value="24h">24-hour</option>
+            </select>
+            <span id="settings-time-help" class="help-text">Clock format for the time slider and readouts.</span>
+          </div>
+
+          <div class="pure-control-group">
+            <label for="settings-wind-unit">Wind speed unit</label>
+            <select id="settings-wind-unit" name="windSpeedUnit" aria-describedby="settings-wind-unit-help">
+              <option value="knots">Knots</option>
+              <option value="mph">Miles per hour (mph)</option>
+              <option value="kph">Kilometers per hour (km/h)</option>
+            </select>
+            <span id="settings-wind-unit-help" class="help-text">Unit shown in the wind report.</span>
+          </div>
+
+          <div class="pure-control-group">
+            <label for="settings-wind-threshold">High wind threshold</label>
+            <input
+              type="number"
+              id="settings-wind-threshold"
+              name="windSpeedThreshold"
+              min="5"
+              max="60"
+              step="1"
+              aria-describedby="settings-wind-threshold-help"
+            />
+            <span id="settings-wind-threshold-help" class="help-text">
+              Wind speeds at or above this value are highlighted in a contrasting color.
+            </span>
+          </div>
+
+          <div class="pure-control-group">
+            <label for="settings-splash">
+              <input type="checkbox" id="settings-splash" name="splashEnabled" />
+              Show splash screen on launch
+            </label>
+          </div>
+        </fieldset>
+
+        <button type="submit" class="pure-button pure-button-primary" aria-label="Save settings">
+          Save Settings
+        </button>
+
+        <p id="themed-settings-status" class="themed-settings-status" role="status" hidden>
+          Settings saved
+        </p>
+      </form>
+    </section>
   </main>
 </SiteLayout>
+
+<script type="module">
+  import { ThemedSettingsFormController } from '../lib/ThemedSettingsFormController.js'
+
+  const formController = new ThemedSettingsFormController({
+    formEl: document.getElementById('themed-settings-form'),
+    statusEl: document.getElementById('themed-settings-status')
+  })
+
+  formController.init()
+</script>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .help-text {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--wtt-color-text-muted);
+  }
+</style>

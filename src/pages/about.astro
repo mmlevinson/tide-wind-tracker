@@ -1,9 +1,44 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro'
+import ThemedPageHeader from '../components/ThemedPageHeader.astro'
 ---
-<SiteLayout pageTitle="About">
+
+<SiteLayout pageTitle="About" showSplash={false}>
   <main>
-    <h1>About</h1>
-    <p>Placeholder view scaffolded by BIYcoder.</p>
+    <ThemedPageHeader
+      title="About Wind Tide Tracker"
+      subtitle="Built for people who read the water before they launch."
+      icon="info"
+    />
+
+    <section class="themed-panel" aria-labelledby="about-mission-heading">
+      <h2 id="about-mission-heading" class="themed-panel__title">Our mission</h2>
+      <p>
+        Wind Tide Tracker helps recreational boaters, kayakers, paddle boarders, and beachcombers
+        understand tide and wind conditions at their exact location. Whether you are planning a
+        morning paddle or checking if the afternoon breeze will pick up, the app puts the essentials
+        in one calm, readable view.
+      </p>
+    </section>
+
+    <section class="themed-panel" aria-labelledby="about-features-heading">
+      <h2 id="about-features-heading" class="themed-panel__title">What makes it different</h2>
+      <ul>
+        <li>GPS-aware — conditions for where you actually are, not a generic harbor listing</li>
+        <li>Time slider — see how tides and wind evolve through your day</li>
+        <li>Visual tide chart — positive tides in black, negative tides in red, with live value readout</li>
+        <li>Wind alerts — speeds above your threshold stand out so you notice changing conditions</li>
+        <li>Offline-ready PWA — install on phone or tablet and open it like a native app</li>
+      </ul>
+    </section>
+
+    <section class="themed-panel" aria-labelledby="about-audience-heading">
+      <h2 id="about-audience-heading" class="themed-panel__title">Who it is for</h2>
+      <p>
+        Anyone who plans to be on or near the water and needs to know when the tide or wind will
+        shift — from casual beach walks to serious paddling trips. Settings let you choose the
+        units and formats that match how you think about the day.
+      </p>
+    </section>
   </main>
 </SiteLayout>

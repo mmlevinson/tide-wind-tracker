@@ -1,9 +1,115 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro'
+import ThemedPageHeader from '../components/ThemedPageHeader.astro'
+
+const faqItems = [
+  {
+    id: 'faq-location',
+    question: 'Why does the app need my location?',
+    answer: 'Wind Tide Tracker uses GPS to find tide and wind data for your exact spot on the coast or waterway. Without location access, the app cannot determine which station or forecast grid to use.'
+  },
+  {
+    id: 'faq-apis',
+    question: 'Where does the tide and wind data come from?',
+    answer: 'The app is designed to pull from public weather and tide APIs. The current scaffold uses sample data for demonstration; live API integration will replace placeholders in a future update.'
+  },
+  {
+    id: 'faq-units',
+    question: 'Can I switch between feet and meters?',
+    answer: 'Yes. Open Settings and choose your preferred tide units. Wind speed units (knots, mph, or km/h) can also be changed there.'
+  },
+  {
+    id: 'faq-time',
+    question: 'How does the time slider work?',
+    answer: 'Drag the slider to any point in the day. Tide height, wind speed, and wind direction all update to reflect conditions at the selected time. The chart marker moves with your selection.'
+  },
+  {
+    id: 'faq-wind-alert',
+    question: 'What is the high wind threshold?',
+    answer: 'You set this in Settings. When average wind speed at the selected time meets or exceeds your threshold, the speed is shown in a contrasting color so you can quickly identify gusty periods.'
+  },
+  {
+    id: 'faq-settings-save',
+    question: 'Are my settings saved when I close the app?',
+    answer: 'Yes. Settings are stored locally as JSON in your browser and restored the next time you open the app. The format is compatible with a future cloud sync to MongoDB.'
+  },
+  {
+    id: 'faq-offline',
+    question: 'Does the app work offline?',
+    answer: 'After the first visit, the PWA caches core pages so you can open the app without a connection. Live tide and wind data still requires network access once APIs are connected.'
+  }
+]
 ---
-<SiteLayout pageTitle="FAQ">
+
+<SiteLayout pageTitle="FAQ" showSplash={false}>
   <main>
-    <h1>FAQ</h1>
-    <p>Placeholder view scaffolded by BIYcoder.</p>
+    <ThemedPageHeader
+      title="Frequently Asked Questions"
+      subtitle="Answers to common questions about tides, wind, and settings."
+      icon="quiz"
+    />
+
+    <section class="themed-panel" aria-labelledby="faq-list-heading">
+      <h2 id="faq-list-heading" class="visually-hidden">Questions and answers</h2>
+      <ul class="themed-faq-list" role="list">
+        {faqItems.map((item) => (
+          <li class="themed-faq-item" role="listitem">
+            <button
+              type="button"
+              class="themed-faq-question"
+              aria-expanded="false"
+              aria-controls={`${item.id}-answer`}
+              id={`${item.id}-button`}
+              data-faq-toggle
+            >
+              <span>{item.question}</span>
+              <span class="material-symbols-outlined" aria-hidden="true">expand_more</span>
+            </button>
+            <div
+              id={`${item.id}-answer`}
+              class="themed-faq-answer"
+              role="region"
+              aria-labelledby={`${item.id}-button`}
+              hidden
+            >
+              <p>{item.answer}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
   </main>
 </SiteLayout>
+
+<script>
+  document.querySelectorAll('[data-faq-toggle]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const answerId = button.getAttribute('aria-controls')
+      const answer = answerId ? document.getElementById(answerId) : null
+      const isExpanded = button.getAttribute('aria-expanded') === 'true'
+
+      button.setAttribute('aria-expanded', isExpanded ? 'false' : 'true')
+      if (answer) {
+        answer.hidden = isExpanded
+      }
+
+      const icon = button.querySelector('.material-symbols-outlined')
+      if (icon) {
+        icon.textContent = isExpanded ? 'expand_more' : 'expand_less'
+      }
+    })
+  })
+</script>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+</style>

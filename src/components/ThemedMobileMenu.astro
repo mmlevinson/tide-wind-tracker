@@ -1,0 +1,60 @@
+---
+import MaterialIcon from './MaterialIcon.astro'
+import siteNav from '../data/siteNav.json'
+
+const { currentPath = '/' } = Astro.props
+---
+
+<div class="themed-mobile-menu" data-themed-mobile-menu>
+  <button
+    type="button"
+    class="themed-mobile-menu__toggle pure-button"
+    id="themed-mobile-menu-toggle"
+    aria-controls="themed-mobile-menu-panel"
+    aria-expanded="false"
+    aria-label="Open navigation menu"
+  >
+    <MaterialIcon name="menu" size="1.5rem" label="Menu" />
+  </button>
+
+  <div
+    id="themed-mobile-menu-panel"
+    class="themed-mobile-menu__panel"
+    role="navigation"
+    aria-label="Mobile navigation"
+    hidden
+  >
+    <div class="themed-mobile-menu__panel-header">
+      <span class="themed-mobile-menu__panel-title">Navigate</span>
+      <button
+        type="button"
+        class="themed-mobile-menu__close pure-button"
+        id="themed-mobile-menu-close"
+        aria-label="Close navigation menu"
+      >
+        <MaterialIcon name="close" size="1.5rem" label="Close" />
+      </button>
+    </div>
+    <ul class="themed-mobile-menu__list" role="list">
+      {siteNav.links.map((link) => (
+        <li class="themed-mobile-menu__item" role="listitem">
+          <a
+            href={link.href}
+            class={`themed-mobile-menu__link ${currentPath === link.href ? 'themed-mobile-menu__link--active' : ''}`}
+            aria-current={currentPath === link.href ? 'page' : undefined}
+          >
+            <MaterialIcon name={link.icon} size="1.25rem" />
+            <span>{link.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+
+  <div
+    class="themed-mobile-menu__backdrop"
+    id="themed-mobile-menu-backdrop"
+    hidden
+    aria-hidden="true"
+  ></div>
+</div>
