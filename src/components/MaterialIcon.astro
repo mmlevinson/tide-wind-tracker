@@ -1,0 +1,18 @@
+---
+/**
+ * Reusable Google Material Symbols icon wrapper.
+ * @prop {string} name - Material Symbols icon name (ligature).
+ * @prop {string} [label] - Accessible label; omit when decorative (aria-hidden).
+ * @prop {string} [size] - CSS font-size value, e.g. "1.25rem".
+ */
+const { name, label = '', size = '1.25rem', class: className = '' } = Astro.props
+const isDecorative = !label
+---
+
+<span
+  class={`material-symbols-outlined themed-icon ${className}`}
+  style={`font-size: ${size}`}
+  aria-hidden={isDecorative ? 'true' : undefined}
+  role={isDecorative ? undefined : 'img'}
+  aria-label={isDecorative ? undefined : label}
+>{name}</span>

@@ -1,23 +1,74 @@
 ---
-const { pageTitle = "BIYcoder" } = Astro.props;
-import '../styles/global.css';
+/**
+ * Shared site layout: splash screen, top menu bar, mobile hamburger menu, PWA meta.
+ * @prop {string} pageTitle - Document title for the current page.
+ * @prop {boolean} showSplash - Whether to render the splash screen overlay.
+ * @prop {string} splashNextRoute - Optional route to open after the splash dismisses.
+ */
+import '../styles/global.css'
+import ThemedSplashScreen from '../components/ThemedSplashScreen.astro'
+import ThemedSiteMenubar from '../components/ThemedSiteMenubar.astro'
+import ThemedMobileMenu from '../components/ThemedMobileMenu.astro'
+
+const {
+  pageTitle = 'Wind Tide Tracker',
+  showSplash = false,
+  splashNextRoute = ''
+} = Astro.props
+
+const currentPath = Astro.url.pathname
+const AppName = 'Wind Tide Tracker'
+const FullTitle = pageTitle === AppName ? AppName : `${pageTitle} · ${AppName}`
 ---
+
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>{pageTitle}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="description" content="GPS-based tide and wind tracker for boaters, kayakers, and beachgoers." />
+    <meta name="theme-color" content="#1a3a4a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Wind Tide Tracker" />
+
+    <title>{FullTitle}</title>
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.svg" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <header class="biycoder-site-menubar">
-      <nav aria-label="Primary">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/settings">Settings</a>
-        <a href="/help">Help</a>
-        <a href="/faq">FAQ</a>
-        <a href="/tides-display">Tides Display</a>
-      </nav>
-    </header>
-    <slot />
+  <body class="themed-body">
+    {showSplash && <ThemedSplashScreen nextRoute={splashNextRoute} />}
+
+    <div class="themed-app-shell" id="themed-app-shell">
+      <div class="themed-app-shell__chrome">
+        <ThemedMobileMenu currentPath={currentPath} />
+        <ThemedSiteMenubar currentPath={currentPath} />
+      </div>
+
+      <div class="themed-app-shell__content">
+        <slot />
+      </div>
+
+      <footer class="themed-site-footer" role="contentinfo">
+        <p class="themed-site-footer__text">
+          Wind Tide Tracker — tides &amp; wind for life on the water
+        </p>
+      </footer>
+    </div>
+
+    <script type="module" src="../scripts/siteChrome.js"></script>
   </body>
 </html>

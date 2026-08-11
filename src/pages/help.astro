@@ -1,9 +1,62 @@
 ---
-import SiteLayout from '../layouts/SiteLayout.astro';
+import SiteLayout from '../layouts/SiteLayout.astro'
+import ThemedPageHeader from '../components/ThemedPageHeader.astro'
+import MaterialIcon from '../components/MaterialIcon.astro'
 ---
-<SiteLayout pageTitle="Help">
+
+<SiteLayout pageTitle="Help" showSplash={false}>
   <main>
-    <h1>Help</h1>
-    <p>Placeholder view scaffolded by BIYcoder.</p>
+    <ThemedPageHeader
+      title="Help"
+      subtitle="Quick guide to using Wind Tide Tracker on phone or tablet."
+      icon="help"
+    />
+
+    <section class="themed-panel" aria-labelledby="help-getting-started-heading">
+      <h2 id="help-getting-started-heading" class="themed-panel__title">Getting started</h2>
+      <ol>
+        <li>Open <strong>Tides Display</strong> from the menu or the home page button.</li>
+        <li>Allow location access when prompted — the app needs GPS to find nearby tide and wind data.</li>
+        <li>Use the <strong>time slider</strong> to move through the day and watch tide and wind values update.</li>
+        <li>Visit <strong>Settings</strong> to choose feet or meters, clock format, and your high-wind threshold.</li>
+      </ol>
+    </section>
+
+    <section class="themed-panel" aria-labelledby="help-reading-chart-heading">
+      <h2 id="help-reading-chart-heading" class="themed-panel__title">Reading the tide chart</h2>
+      <p>
+        The chart shows tide height over a 24-hour period. Areas above the center line (positive tides)
+        are filled in black; areas below (negative tides) are filled in red. The dashed vertical line
+        marks the time selected on the slider. The large number above the chart is the tide height at
+        that moment.
+      </p>
+    </section>
+
+    <section class="themed-panel" aria-labelledby="help-wind-heading">
+      <h2 id="help-wind-heading" class="themed-panel__title">Wind report</h2>
+      <p>
+        Average wind speed and direction appear at the top of the display and update as you move the
+        time slider. When speed meets or exceeds your threshold (set in Settings), the value changes
+        to a contrasting highlight color so high-wind periods are easy to spot.
+      </p>
+    </section>
+
+    <section class="themed-panel" aria-labelledby="help-install-heading">
+      <h2 id="help-install-heading" class="themed-panel__title">Install on your device</h2>
+      <p>
+        Wind Tide Tracker is a Progressive Web App. On most phones and tablets, use your browser’s
+        “Add to Home Screen” or “Install app” option to pin it alongside your other apps.
+      </p>
+      <div class="themed-cta-row">
+        <a href="/tides-display" class="pure-button pure-button-primary" aria-label="Go to tides display">
+          <MaterialIcon name="waves" size="1.1rem" />
+          Open Tides Display
+        </a>
+        <a href="/faq" class="pure-button" aria-label="View frequently asked questions">
+          <MaterialIcon name="quiz" size="1.1rem" />
+          View FAQ
+        </a>
+      </div>
+    </section>
   </main>
 </SiteLayout>

@@ -1,0 +1,15 @@
+---
+import MaterialIcon from './MaterialIcon.astro'
+
+const { title, subtitle = '', icon = 'water' } = Astro.props
+---
+
+<header class="themed-page-header">
+  <div class="themed-page-header__icon-wrap" aria-hidden="true">
+    <MaterialIcon name={icon} size="2rem" />
+  </div>
+  <div class="themed-page-header__text">
+    <h1 class="themed-page-header__title">{title}</h1>
+    {subtitle && <p class="themed-page-header__subtitle">{subtitle}</p>}
+  </div>
+</header>

@@ -1,43 +1,63 @@
-# Astro Starter Kit: Minimal
+# Wind Tide Tracker
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A Progressive Web App for recreational boaters, kayakers, paddle boarders, and beachcombers who need tide and wind conditions at their GPS location.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Features
 
-## 🚀 Project Structure
+- **GPS location** — finds tide and wind data near you
+- **Time slider** — scrub through the day to preview changing conditions
+- **Tide chart** — positive tides in black, negative tides in red
+- **Wind report** — speed and direction with configurable high-wind highlighting
+- **Settings** — feet/meters, 12h/24h clock, wind units and thresholds (persisted locally as MongoDB-compatible JSON)
+- **PWA** — install on phone or tablet for app-like access
 
-Inside of your Astro project, you'll see the following folders and files:
+## Project Structure
 
 ```text
 /
 ├── public/
+│   ├── manifest.webmanifest   # PWA manifest
+│   ├── sw.js                  # Service worker
+│   └── icons/                 # App icons
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/            # Themed UI components (splash, menubar, mobile menu)
+│   ├── data/                  # Shared navigation config
+│   ├── layouts/               # SiteLayout with shared chrome
+│   ├── lib/                   # Themed* JS classes (settings, tide display, etc.)
+│   ├── pages/                 # Routable Astro views
+│   ├── scripts/               # Client-side init scripts
+│   └── styles/
+│       ├── global.css         # Pure.css import + overrides hook
+│       └── biycoder-theme-overrides.css
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Pages
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Route | Page |
+|-------|------|
+| `/` | Home |
+| `/tides-display` | Main tide & wind display |
+| `/settings` | User preferences |
+| `/about` | About the app |
+| `/help` | Usage guide |
+| `/faq` | Frequently asked questions |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Commands
 
-## 🧞 Commands
+| Command | Action |
+|---------|--------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start dev server at `http://127.0.0.1:6658` |
+| `npm run build` | Production build to `./dist/` |
+| `npm run preview` | Preview production build |
 
-All commands are run from the root of the project, from a terminal:
+## Styling
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Uses **Pure.css** via `src/styles/global.css`. All theme customization goes in `src/styles/biycoder-theme-overrides.css` — never edit `node_modules/`.
 
-## 👀 Want to learn more?
+Icons use **Google Material Symbols** loaded from Google Fonts.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Data Storage
+
+Local settings are stored as JSON documents with `_id` fields for seamless migration to MongoDB when remote sync is implemented. See `src/lib/ThemedJsonStore.js` and `src/lib/ThemedAppSettings.js`.
