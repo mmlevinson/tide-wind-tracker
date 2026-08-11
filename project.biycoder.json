@@ -68,20 +68,29 @@
   "versionLabel": "0.3",
   "lastPublishedAt": "2026-08-11T03:14:30+00:00",
   "lastPublishedBy": "Cheechako",
-  "gitWorkflowVersion": 1,
-  "productionBranch": "main",
-  "activeWorkBranch": "working",
-  "activeWorkLabel": "General improvements",
-  "activeChecklistParentRowId": "",
-  "activeChecklistRowIds": [],
-  "pendingFixReturnBranch": "main",
-  "lastBackupAt": "2026-08-11T03:14:07+00:00",
+  "deployments": [
+    {
+      "branch": "main",
+      "commitSha": "f26b4d7cc07017955d0ca7082e9283087d30ac48",
+      "deploymentUrl": "https://tide-wind-tracker-f882cbef56b3.herokuapp.com/",
+      "deployedAt": "2026-08-11T03:15:01+00:00",
+      "deploymentTarget": "heroku",
+      "previewKind": "released_version"
+    }
+  ],
+  "createdAt": "2026-08-05T02:33:41+00:00",
+  "versionStatusLabel": "published",
   "lastBackupCommit": "ed0d506bbace0c5efed46437e1cbaaef5bb05389",
+  "pendingFixReturnBranch": "main",
+  "herokuReleasedBranch": "main",
+  "productionBranch": "main",
   "lastPublishedCommit": "5f77aa74145d92bd275b3ee294fb907c4ef0b97c",
   "herokuPrototypeBranch": "",
-  "herokuReleasedBranch": "main",
-  "deployments": [],
-  "createdAt": "2026-08-05T02:33:41+00:00",
+  "activeChecklistParentRowId": "",
+  "activeChecklistRowIds": [],
+  "activeWorkBranch": "working",
+  "gitWorkflowVersion": 1,
   "updatedAt": "2026-08-11T03:14:07+00:00",
-  "versionStatusLabel": "published"
+  "activeWorkLabel": "General improvements",
+  "lastBackupAt": "2026-08-11T03:14:07+00:00"
 }
