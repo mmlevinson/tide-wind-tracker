@@ -97,6 +97,7 @@ h1, h2, h3, h4 {
 }
 
 .themed-app-shell__chrome {
+  --wtt-chrome-height: 3.5rem;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -129,16 +130,23 @@ h1, h2, h3, h4 {
 /* ── Splash screen ─────────────────────────────────────────────── */
 .themed-splash-screen {
   position: fixed;
-  inset: 0;
-  z-index: 9999;
+  top: var(--wtt-chrome-height, 3.5rem);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: linear-gradient(165deg, #1a3a4a 0%, #2d5a6e 45%, #5a8fa8 100%);
   color: #faf8f4;
-  cursor: pointer;
+  cursor: default;
   transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.themed-splash-screen[hidden] {
+  display: none;
 }
 
 .themed-splash-screen--fade-out {
@@ -212,6 +220,20 @@ h1, h2, h3, h4 {
   margin: 0;
   opacity: 0.85;
   text-align: center;
+}
+
+.themed-splash-screen__continue {
+  margin-top: 1.5rem;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.65rem 1.25rem;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .themed-splash-screen {
+    transition: none;
+  }
 }
 
 @keyframes wtt-wave-drift {

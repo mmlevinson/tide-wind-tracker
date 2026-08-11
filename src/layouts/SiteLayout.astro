@@ -50,13 +50,13 @@ const FullTitle = pageTitle === AppName ? AppName : `${pageTitle} · ${AppName}`
     />
   </head>
   <body class="themed-body">
-    {showSplash && <ThemedSplashScreen nextRoute={splashNextRoute} />}
-
     <div class="themed-app-shell" id="themed-app-shell">
       <div class="themed-app-shell__chrome">
         <ThemedMobileMenu currentPath={currentPath} />
         <ThemedSiteMenubar currentPath={currentPath} />
       </div>
+
+      {showSplash && <ThemedSplashScreen nextRoute={splashNextRoute} />}
 
       <div class="themed-app-shell__content">
         <slot />

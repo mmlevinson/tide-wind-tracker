@@ -10,9 +10,13 @@ function initSiteChrome() {
   const settings = settingsStore.load()
 
   const splashEl = document.getElementById('themed-splash-screen')
+  const continueBtn = document.getElementById('themed-splash-continue')
+  const inertTargetEl = document.querySelector('.themed-app-shell__content')
   const nextRoute = splashEl ? (splashEl.dataset.nextRoute || '').trim() : ''
   const splashController = new ThemedSplashController({
     splashEl: splashEl,
+    continueBtn: continueBtn,
+    inertTargetEl: inertTargetEl,
     nextRoute: nextRoute,
     displayDurationMs: 2000,
     fadeDurationMs: 800

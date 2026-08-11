@@ -7,10 +7,9 @@ const { nextRoute = '' } = Astro.props
 <div
   id="themed-splash-screen"
   class="themed-splash-screen"
-  role="dialog"
-  aria-modal="true"
-  aria-label="Tide & Wind Tracker loading splash. Tap to continue."
-  aria-live="polite"
+  role="region"
+  aria-labelledby="themed-splash-title"
+  aria-label="Tide and Wind Tracker welcome"
   data-next-route={nextRoute || undefined}
 >
   <div class="themed-splash-screen__scene" aria-hidden="true">
@@ -20,7 +19,14 @@ const { nextRoute = '' } = Astro.props
     <MaterialIcon name="sailing" size="4rem" class="themed-splash-screen__icon" />
   </div>
   <div class="themed-splash-screen__content">
-    <h1 class="themed-splash-screen__title">Tide &amp; Wind Tracker</h1>
+    <h1 id="themed-splash-title" class="themed-splash-screen__title">Tide &amp; Wind Tracker</h1>
     <p class="themed-splash-screen__tagline">Know the water before you go</p>
+    <button
+      type="button"
+      id="themed-splash-continue"
+      class="pure-button pure-button-primary themed-splash-screen__continue"
+    >
+      Continue to Tides
+    </button>
   </div>
 </div>

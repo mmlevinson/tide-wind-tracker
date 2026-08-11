@@ -5,6 +5,8 @@
 export class ThemedSplashController {
   constructor(options) {
     this.splashEl = options.splashEl
+    this.continueBtn = options.continueBtn
+    this.inertTargetEl = options.inertTargetEl
     this.fadeDurationMs = options.fadeDurationMs || 800
     this.displayDurationMs = options.displayDurationMs || 2000
     this.nextRoute = (options.nextRoute || '').trim()
@@ -14,8 +16,12 @@ export class ThemedSplashController {
     this._onDismissClick = () => {
       this.dismiss()
     }
+    this._onContinueClick = (event) => {
+      event.stopPropagation()
+      this.dismiss()
+    }
     this._onDismissKey = (event) => {
-      if (event.key === 'Enter' || event.key === ' ' || event.key === 'Escape') {
+      if (event.key === 'Escape') {
         event.preventDefault()
         this.dismiss()
       }
@@ -44,6 +50,46 @@ export class ThemedSplashController {
     }
   }
 
+  //* -------------------------------- setBackgroundInert -------------------------------------/
+  /* Toggles inert on page content and footer so only splash chrome stays interactive.
+  */
+  setBackgroundInert(inert) {
+    if (this.inertTargetEl) {
+      this.inertTargetEl.inert = inert
+    }
+    const footerEl = document.querySelector('.themed-site-footer')
+    if (footerEl) {
+      footerEl.inert = inert
+    }
+  }
+
+  //* -------------------------------- releaseFocus -------------------------------------/
+  /* Blurs focus when it remains inside the splash before hide or navigation.
+  */
+  releaseFocus() {
+    if (!this.splashEl) {
+      return
+    }
+    const activeEl = document.activeElement
+    if (activeEl && this.splashEl.contains(activeEl)) {
+      activeEl.blur()
+    }
+  }
+
+  //* -------------------------------- focusContinueButton -------------------------------------/
+  /* Moves keyboard focus to the Continue control when the splash is shown.
+  */
+  focusContinueButton() {
+    if (!this.continueBtn) {
+      return
+    }
+    try {
+      this.continueBtn.focus({ preventScroll: true })
+    } catch (error) {
+      /* Focus is optional when the host web view rejects programmatic focus. */
+    }
+  }
+
   //* -------------------------------- hideImmediately -------------------------------------/
   /* Hides splash without animation when it should not be shown.
   */
@@ -51,8 +97,9 @@ export class ThemedSplashController {
     if (!this.splashEl) {
       return
     }
+    this.releaseFocus()
     this.splashEl.classList.add('themed-splash-screen--hidden')
-    this.splashEl.setAttribute('aria-hidden', 'true')
+    this.splashEl.hidden = true
   }
 
   //* -------------------------------- clearDisplayTimer -------------------------------------/
@@ -74,6 +121,9 @@ export class ThemedSplashController {
     }
     this.splashEl.removeEventListener('click', this._onDismissClick)
     this.splashEl.removeEventListener('keydown', this._onDismissKey)
+    if (this.continueBtn) {
+      this.continueBtn.removeEventListener('click', this._onContinueClick)
+    }
   }
 
   //* -------------------------------- bindDismissGestures -------------------------------------/
@@ -83,14 +133,12 @@ export class ThemedSplashController {
     if (!this.splashEl) {
       return
     }
-    this.splashEl.setAttribute('tabindex', '0')
     this.splashEl.addEventListener('click', this._onDismissClick)
     this.splashEl.addEventListener('keydown', this._onDismissKey)
-    try {
-      this.splashEl.focus({ preventScroll: true })
-    } catch (error) {
-      /* Focus is optional when the host web view rejects programmatic focus. */
+    if (this.continueBtn) {
+      this.continueBtn.addEventListener('click', this._onContinueClick)
     }
+    this.focusContinueButton()
   }
 
   //* -------------------------------- navigateToNext -------------------------------------/
@@ -113,13 +161,15 @@ export class ThemedSplashController {
 
     this._dismissed = true
     this.clearDisplayTimer()
+    this.releaseFocus()
     this.unbindDismissGestures()
+    this.setBackgroundInert(false)
     this.markSeen()
     this.splashEl.classList.add('themed-splash-screen--fade-out')
 
     window.setTimeout(() => {
       this.splashEl.classList.add('themed-splash-screen--hidden')
-      this.splashEl.setAttribute('aria-hidden', 'true')
+      this.splashEl.hidden = true
       if (this.nextRoute) {
         this.navigateToNext()
       }
@@ -142,6 +192,12 @@ export class ThemedSplashController {
       return
     }
 
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      this.fadeDurationMs = 0
+      this.displayDurationMs = 0
+    }
+
+    this.setBackgroundInert(true)
     this.bindDismissGestures()
     this._displayTimer = window.setTimeout(() => {
       this.dismiss()
