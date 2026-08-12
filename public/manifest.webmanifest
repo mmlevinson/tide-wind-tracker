@@ -1,6 +1,6 @@
 {
   "name": "Tide & Wind Tracker",
-  "short_name": "Tide Tracker",
+  "short_name": "Tide & Wind Tracker",
   "description": "GPS-based tide and wind tracker for recreational boaters and beachgoers.",
   "start_url": "/",
   "display": "standalone",
