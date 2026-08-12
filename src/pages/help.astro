@@ -2,13 +2,14 @@
 import SiteLayout from '../layouts/SiteLayout.astro'
 import ThemedPageHeader from '../components/ThemedPageHeader.astro'
 import MaterialIcon from '../components/MaterialIcon.astro'
+import { AppName } from '../constants/appName'
 ---
 
 <SiteLayout pageTitle="Help">
   <main>
     <ThemedPageHeader
       title="Help"
-      subtitle="Quick guide to using Wind Tide Tracker on phone or tablet."
+      subtitle={`Quick guide to using ${AppName} on phone or tablet.`}
       icon="help"
     />
 
@@ -44,7 +45,7 @@ import MaterialIcon from '../components/MaterialIcon.astro'
     <section class="themed-panel" aria-labelledby="help-install-heading">
       <h2 id="help-install-heading" class="themed-panel__title">Install on your device</h2>
       <p>
-        Wind Tide Tracker is a Progressive Web App. On most phones and tablets, use your browser’s
+        {AppName} is a Progressive Web App. On most phones and tablets, use your browser’s
         “Add to Home Screen” or “Install app” option to pin it alongside your other apps.
       </p>
       <div class="themed-cta-row">

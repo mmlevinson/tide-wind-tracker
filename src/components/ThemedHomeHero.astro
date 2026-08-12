@@ -1,5 +1,6 @@
 ---
 import MaterialIcon from './MaterialIcon.astro'
+import { AppName } from '../constants/appName'
 ---
 
 <section class="themed-home-hero" aria-labelledby="themed-home-hero-title">
@@ -10,7 +11,7 @@ import MaterialIcon from './MaterialIcon.astro'
     <MaterialIcon name="sailing" size="4rem" class="themed-home-hero__icon" />
   </div>
   <div class="themed-home-hero__content">
-    <h1 id="themed-home-hero-title" class="themed-home-hero__title">Tide &amp; Wind Tracker</h1>
+    <h1 id="themed-home-hero-title" class="themed-home-hero__title">{AppName}</h1>
     <p class="themed-home-hero__tagline">Know the water before you go</p>
     <a
       href="/tides-display"

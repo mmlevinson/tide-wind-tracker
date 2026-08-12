@@ -1,20 +1,14 @@
 ---
 import MaterialIcon from './MaterialIcon.astro'
+import ThemedMobileMenu from './ThemedMobileMenu.astro'
 import siteNav from '../data/siteNav.json'
 
 const { currentPath = '/' } = Astro.props
 ---
 
-<header class="themed-site-menubar pure-g" role="banner">
-  <div class="pure-u-1 pure-u-md-1-3 themed-site-menubar__brand">
-    <a href="/" class="themed-site-menubar__brand-link" aria-label="Wind Tide Tracker home">
-      <MaterialIcon name="waves" size="1.5rem" />
-      <span class="themed-site-menubar__brand-text">Wind Tide Tracker</span>
-    </a>
-  </div>
-
+<header class="themed-site-menubar" role="banner">
   <nav
-    class="pure-u-1 pure-u-md-2-3 themed-site-menubar__nav themed-site-menubar__nav--desktop"
+    class="themed-site-menubar__nav themed-site-menubar__nav--desktop"
     aria-label="Primary navigation"
   >
     <ul class="themed-site-menubar__list" role="list">
@@ -32,4 +26,6 @@ const { currentPath = '/' } = Astro.props
       ))}
     </ul>
   </nav>
+
+  <ThemedMobileMenu currentPath={currentPath} />
 </header>

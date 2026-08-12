@@ -5,14 +5,13 @@
  */
 import '../styles/global.css'
 import ThemedSiteMenubar from '../components/ThemedSiteMenubar.astro'
-import ThemedMobileMenu from '../components/ThemedMobileMenu.astro'
+import { AppName } from '../constants/appName'
 
 const {
-  pageTitle = 'Wind Tide Tracker'
+  pageTitle = AppName
 } = Astro.props
 
 const currentPath = Astro.url.pathname
-const AppName = 'Wind Tide Tracker'
 const FullTitle = pageTitle === AppName ? AppName : `${pageTitle} · ${AppName}`
 ---
 
@@ -25,7 +24,7 @@ const FullTitle = pageTitle === AppName ? AppName : `${pageTitle} · ${AppName}`
     <meta name="theme-color" content="#1a3a4a" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Wind Tide Tracker" />
+    <meta name="apple-mobile-web-app-title" content={AppName} />
 
     <title>{FullTitle}</title>
 
@@ -47,7 +46,6 @@ const FullTitle = pageTitle === AppName ? AppName : `${pageTitle} · ${AppName}`
   <body class="themed-body">
     <div class="themed-app-shell" id="themed-app-shell">
       <div class="themed-app-shell__chrome">
-        <ThemedMobileMenu currentPath={currentPath} />
         <ThemedSiteMenubar currentPath={currentPath} />
       </div>
 
@@ -57,7 +55,7 @@ const FullTitle = pageTitle === AppName ? AppName : `${pageTitle} · ${AppName}`
 
       <footer class="themed-site-footer" role="contentinfo">
         <p class="themed-site-footer__text">
-          Wind Tide Tracker — tides &amp; wind for life on the water
+          {AppName} — tides &amp; wind for life on the water
         </p>
       </footer>
     </div>

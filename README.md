@@ -1,4 +1,4 @@
-# Wind Tide Tracker
+# Tide & Wind Tracker
 
 A Progressive Web App for recreational boaters, kayakers, paddle boarders, and beachcombers who need tide and wind conditions at their GPS location.
 

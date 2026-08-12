@@ -1,12 +1,13 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
 import ThemedPageHeader from '../components/ThemedPageHeader.astro'
+import { AppName } from '../constants/appName'
 
 const faqItems = [
   {
     id: 'faq-location',
     question: 'Why does the app need my location?',
-    answer: 'Wind Tide Tracker uses GPS to find tide and wind data for your exact spot on the coast or waterway. Without location access, the app cannot determine which station or forecast grid to use.'
+    answer: `${AppName} uses GPS to find tide and wind data for your exact spot on the coast or waterway. Without location access, the app cannot determine which station or forecast grid to use.`
   },
   {
     id: 'faq-apis',

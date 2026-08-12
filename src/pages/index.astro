@@ -1,9 +1,10 @@
 ---
 import SiteLayout from '../layouts/SiteLayout.astro'
 import ThemedHomeHero from '../components/ThemedHomeHero.astro'
+import { AppName } from '../constants/appName'
 ---
 
-<SiteLayout pageTitle="Wind Tide Tracker">
+<SiteLayout pageTitle={AppName}>
   <main>
     <ThemedHomeHero />
   </main>

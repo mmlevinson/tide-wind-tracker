@@ -1,5 +1,5 @@
 /*
- BIYcoder theme overrides for Pure.css — Wind Tide Tracker
+ BIYcoder theme overrides for Pure.css — Tide & Wind Tracker
  Customize site colors and branding HERE only. Do not edit node_modules/.
 */
 
@@ -234,25 +234,19 @@ h1, h2, h3, h4 {
 /* ── Top menu bar ──────────────────────────────────────────────── */
 .themed-site-menubar {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
+  justify-content: center;
   padding: 0.6rem 1rem;
   max-width: 960px;
   margin: 0 auto;
+  min-height: var(--wtt-chrome-height, 3.5rem);
+  position: relative;
 }
 
-.themed-site-menubar__brand-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--wtt-color-ocean-deep);
-  font-family: var(--wtt-font-display);
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.themed-site-menubar__brand-link:hover {
-  color: var(--wtt-color-ocean-mid);
+.themed-site-menubar__nav {
+  flex: 1;
+  min-width: 0;
 }
 
 .themed-site-menubar__nav--desktop {
@@ -261,12 +255,12 @@ h1, h2, h3, h4 {
 
 .themed-site-menubar__list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 0.25rem 0.75rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  justify-content: flex-end;
+  justify-content: center;
 }
 
 .themed-site-menubar__link {
@@ -294,14 +288,14 @@ h1, h2, h3, h4 {
 
 /* ── Mobile hamburger menu ─────────────────────────────────────── */
 .themed-mobile-menu {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  z-index: 110;
 }
 
 .themed-mobile-menu__toggle {
-  position: absolute;
-  top: 0.65rem;
-  right: 1rem;
-  z-index: 110;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -2,20 +2,21 @@
 import SiteLayout from '../layouts/SiteLayout.astro'
 import ThemedPageHeader from '../components/ThemedPageHeader.astro'
 import MaterialIcon from '../components/MaterialIcon.astro'
+import { AppName } from '../constants/appName'
 ---
 
 <SiteLayout pageTitle="About">
   <main>
     <ThemedPageHeader
-      title="Wind Tide Tracker"
+      title="About"
       subtitle="Tides and wind at your location — plan your day on the water with confidence."
-      icon="sailing"
+      icon="info"
     />
 
     <section class="themed-panel" aria-labelledby="about-intro-heading">
       <h2 id="about-intro-heading" class="themed-panel__title">Your companion on the water</h2>
       <p>
-        Wind Tide Tracker uses your GPS location to find nearby tide heights, wind speed,
+        {AppName} uses your GPS location to find nearby tide heights, wind speed,
         and wind direction. Move through the day with an interactive time slider and see
         how conditions change before you launch your kayak, board the boat, or head to the beach.
       </p>
@@ -90,7 +91,7 @@ import MaterialIcon from '../components/MaterialIcon.astro'
           </div>
           <h3 class="themed-feature-card__title">Install as App</h3>
           <p class="themed-feature-card__text">
-            Add Wind Tide Tracker to your home screen for quick access on phone or tablet — works offline after first load.
+            Add {AppName} to your home screen for quick access on phone or tablet — works offline after first load.
           </p>
         </article>
       </div>
