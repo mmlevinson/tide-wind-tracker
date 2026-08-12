@@ -1,4 +1,4 @@
-const CacheName = 'wind-tide-tracker-v1'
+const CacheName = 'wind-tide-tracker-v2'
 const PrecacheUrls = ['/', '/tides-display', '/settings', '/about', '/help', '/faq']
 
 self.addEventListener('install', (event) => {
