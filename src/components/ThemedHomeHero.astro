@@ -1,24 +1,13 @@
 ---
-import MaterialIcon from './MaterialIcon.astro'
 import { AppName } from '../constants/appName'
 ---
 
-<section class="themed-home-hero" aria-labelledby="themed-home-hero-title">
-  <div class="themed-home-hero__scene" aria-hidden="true">
-    <div class="themed-home-hero__wave themed-home-hero__wave--back"></div>
-    <div class="themed-home-hero__wave themed-home-hero__wave--mid"></div>
-    <div class="themed-home-hero__wave themed-home-hero__wave--front"></div>
-    <MaterialIcon name="sailing" size="4rem" class="themed-home-hero__icon" />
-  </div>
-  <div class="themed-home-hero__content">
-    <h1 id="themed-home-hero-title" class="themed-home-hero__title">{AppName}</h1>
-    <p class="themed-home-hero__tagline">Know the water before you go</p>
-    <a
-      href="/tides-display"
-      class="pure-button pure-button-primary themed-home-hero__cta"
-      aria-label="Open tides and wind display"
-    >
-      View Tides &amp; Wind
-    </a>
-  </div>
+<section class="themed-home-hero" aria-label={AppName}>
+  <a
+    href="/tides-display"
+    class="pure-button pure-button-primary themed-home-hero__cta"
+    aria-label="Open tides and wind display"
+  >
+    View Tides &amp; Wind
+  </a>
 </section>
